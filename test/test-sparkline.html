@@ -1,0 +1,100 @@
+<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Sparklines - Test plugin</title>
+        <link rel="stylesheet" type="text/css" href="../css/shCore.css" />
+        <link rel="stylesheet" type="text/css" href="../css/shCoreDefault.css" />
+        <style type="text/css">
+            pre { font-size: smaller !important; }
+            blockquote {
+                background-color: #FBF9EA;
+                border: 1px solid #E2E1D5;
+                margin: 2em;
+            }
+            blockquote p {
+                padding: 0 1em;
+            }
+        </style>
+        <script type="text/javascript" src="../js/syntaxhighlighter/shCore.js"><!-- --></script>
+        <script type="text/javascript" src="../js/syntaxhighlighter/shBrushJScript.js"><!-- --></script>
+        <script type="text/javascript" src="../js/syntaxhighlighter/shBrushXml.js"><!-- --></script>
+        <script type="text/javascript">
+            SyntaxHighlighter.all();
+        </script>
+    </head>
+    <body>
+        
+        <h1>Sparklines - Test of on-demand jquery and plugin loading</h1>
+        
+        <p>No jQuery scripts or plugins are present in this page.
+        All necessary javascripts are loaded on-demand. The following sparklines 
+        are dynamically created based on values retrieved from the SDMX
+        REST API.</p>
+
+        <blockquote>
+            <p>This phrase shows the evolution of unemployment in Germany 
+                <span id="de_unemp"></span>, France <span id="fr_unemp"></span> 
+                and Spain <span id="es_unemp"></span> from 1995-2005.</p>
+        </blockquote>
+        
+        <p>This is the code that needs to be inserted in the HTML document, first the HTML (note the <code>span</code> elements)</p>
+
+        <pre class="brush: xml;">
+<p>This phrase shows the evolution of unemployment in Germany 
+<span id="de_unemp"></span>, France <span id="fr_unemp"></span> 
+and Spain <span id="es_unemp"></span> from 1995-2005.</p>            
+        </pre>
+        
+        <p>and then the Javavscript:</p>
+        
+        <pre class="brush: xml js;">                   
+&lt;script type="text/javascript" src="../js/sdmx/sparkline.js">&lt;!-- //-->&lt;/script>
+&lt;script type="text/javascript">
+$(function () {
+    var de = { locations: "DEU", subjects: "UNEMP", frequency: "A", params: { startTime: 1995, endTime: 2005 }};
+    SDMX.insertSparkline( de, "de_unemp" );
+    var fr = { locations: "FRA", subjects: "UNEMP", frequency: "A", params: { startTime: 1995, endTime: 2005 }};
+    SDMX.insertSparkline( fr, "fr_unemp" );
+    var es = { locations: "ESP", subjects: "UNEMP", frequency: "A", params: { startTime: 1995, endTime: 2005 }};
+    SDMX.insertSparkline( es, "es_unemp" );
+});
+&lt;/script>
+        </pre>
+        
+        <script type="text/javascript" src="../js/sdmx/sparkline.js"><!-- //--></script>
+        <script type="text/javascript">
+        $(function () {
+            var de = { 
+                locations: "DEU", 
+                subjects: "UNEMP", 
+                frequency: "A", 
+                params: {
+                    startTime: 1995,
+                    endTime: 2005
+                }
+            };
+            var fr = {
+                locations: "FRA", 
+                subjects: "UNEMP", 
+                frequency: "A", 
+                params: {
+                    startTime: 1995,
+                    endTime: 2005
+                }
+            };
+            var es = {
+                locations: "ESP", 
+                subjects: "UNEMP", 
+                frequency: "A", 
+                params: {
+                    startTime: 1995,
+                    endTime: 2005
+                }
+            }
+            SDMX.insertSparkline( de, "de_unemp" );
+            SDMX.insertSparkline( fr, "fr_unemp" );
+            SDMX.insertSparkline( es, "es_unemp" );
+        });
+        </script>
+    </body>
+</html>

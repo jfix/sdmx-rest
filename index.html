@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>SDMX REST API documentation</title>
+        <link rel="stylesheet" type="text/css" href="css/baseline.compress.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+<style type="text/css">
+    strong.note {
+        background-color: yellow;
+    }
+    em.note {
+        <!--background-color: ;-->
+    }
+</style>
+        <script type="text/javascript">
+            var svn_id = "$Id: index.html 107 2010-10-20 22:18:15Z Fix_J $";
+            var svn_rev = "$Rev: 107 $";
+        </script>
+        <script type="text/javascript" src="js/jquery-1.4.2.min.js"><!-- // --></script>
+        <script type="text/javascript" src="js/site.js"><!-- // --></script>
+    </head>
+    <body>
+        <div id="page">
+            <div class="column width4 first">
+                <h1 class="mainhead">SDMX REST API documentation</h1>
+                <h1 class="subhead">
+                    <span class="selected">&#8594;Home</span>
+                    <a class="menu" href="examples.html"><span class="arrow">&#8594;</span><span class="unselected">Examples</span></a>
+                    <a class="menu" href="reference.html"><span class="arrow">&#8594;</span><span class="unselected">Reference</span></a>
+                    <a class="menu" href="playground.html"><span class="arrow">&#8594;</span><span class="unselected">Playground</span></a>
+                </h1>
+                <div id="sect1">
+                    <p>This little project is intended as a very small contribution to the 
+                        <a href="http://unstats.un.org/unsd/wsd/">World Statistics Day</a>, 20/10/2010.</p>
+
+                    <h2>What this is about</h2>
+                    
+                    
+                    <p>The OECD exposes a very interesting and rich <a href="http://tomayko.com/writings/rest-to-my-wife">RESTful</a> 
+                        <a href="http://en.wikipedia.org/wiki/Application_programming_interface">API</a> (application programming interface)
+                        that returns SDMX data. <a href="http://sdmx.org/">SDMX</a>
+                    is an international XML-based standard for the exchange of statistical data. Unfortunately,
+                    I couldn't find any official information about this programming interface. On the plus side,
+                    this interface almost auto-documents itself (although I may be exaggerating a bit here) and can
+                    be used for reference information.</p>
+                    
+                    <p>The goal of this mini-site is to be a first step towards a fully documented SDMX API. It
+                    doesn't make any claim on being exhaustive, reliable, offical, etc.</p>
+                    
+                    <p>Note: This is a personal initiative and is not related to my day job (although I do work at the OECD).</p>
+
+                </div>
+                
+                <div id="sect2">
+                    <h2>Todo list</h2>
+                    
+                    <p>As can be seen from the lists below, this is only just the beginning of what could become
+                        a very powerful way to expose the OECD's data to a very technical and knowledgable public,
+                        web developers.</p>
+                    
+                    <div class="column width2 first">
+                        <h3>missing things</h3>
+                        <ul>
+                            <li><strong class="note">provide JSON</strong>: XML is great, unfortunately due to security constraints 
+                                it must come from the same domain
+                            as the application which requires additional techniques (such as a local proxy as used for this website) 
+                            to be put in place. JSON does not have this drawback 
+                                <em class="note">This is something the OECD should provide to make work easier for outside developers.</em></li>
+                            <li><strong class="note">provide absolute values</strong>: when working with the unemployment figures (<span class="code">UNEMP</span>),
+                            I've noticed that its description says something like <strong>"in '000"</strong>. However, this is difficult to parse
+                            and it would be easier for the external developer to simply have the absolute values and then convert
+                            or present them in a manner that's appropriate for their application or website. <em class="note">This is also something
+                            that only the SDMX backend maintainer can provide.</em></li>
+                            <li><strong class="note">a more polished framework</strong>: helper methods to translate the codes to their 
+                            French or English equivalent; more options for the different outputs (language, format, layout, ...);
+                            more outputs (not just tables, charts, sparklines), csv, wiki, ...; 
+                            output status codes where appropriate; 
+                            error handling</li>
+                            <li><strong class="note">an interactive sandbox</strong>: it's coming, it's just not ready yet, 
+                                see <a href="playground.html">Playground</a></li>
+                            <li><strong class="note">access control</strong>: as with all APIs, a way to limit access to
+                            the data and to follow up on usage patterns to improve the API, some kind of authentication,
+                            typically via tokens should be put in place.</li>
+                        </ul>
+                        
+                    </div>
+                    <div class="column width2 ">
+                        <h3>stuff that works</h3>
+                        <ul>
+                            <li>a basic framework of <strong class="note">four different outputs</strong>: 
+                                <ul>
+                                    <li><a href="examples.html#single">single values</a>, </li>
+                                    <li><a href="examples.html#spark">sparklines</a>, </li>
+                                    <li><a href="examples.html#table">tables</a>, </li>
+                                    <li><a href="examples.html#chart">charts</a>.</li>
+                                </ul>
+                            </li>
+                            <li>a valid and working <strong class="note">embed</strong> approach 
+                                (see <a href="examples.html#embed">embed this!</a>)</li>
+                            <li>a basic <strong class="note"><a href="reference.html">reference</a></strong> 
+                                of the methods that have been 
+                                found by trial and error</li>
+                        </ul>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="width4 column first" style="text-align:right; color:white;"><em>Yet another major success!</em> - <span id="svn_id"></span></div>
+    </body>
+</html>

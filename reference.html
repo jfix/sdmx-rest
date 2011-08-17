@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Reference - SDMX REST API Documentation</title>
+        <link rel="stylesheet" type="text/css" href="css/baseline.compress.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <script type="text/javascript">
+            var svn_id = "$Id: reference.html 108 2010-10-20 22:29:32Z Fix_J $";
+            var svn_rev = "$Rev: 108 $";
+        </script>
+        <script type="text/javascript" src="js/jquery-1.4.2.min.js"><!-- // --></script>
+        <script type="text/javascript" src="js/jquery.tablesorter.min.js"><!-- // --></script>
+        <script type="text/javascript" src="js/site.js"><!-- // --></script>
+        <script type="text/javascript" src="js/reference.js"><!-- // --></script>
+    </head>
+    <body>
+        <div id="page">
+            <div class="column width8 first">
+                <h1 class="mainhead">SDMX REST API documentation</h1>
+                <h1 class="subhead"><a class="menu" href="index.html"><span class="arrow">&#8594;</span><span class="unselected">Home</span></a>
+                    <a class="menu" href="examples.html"><span class="arrow">&#8594;</span><span class="unselected">Examples</span></a>
+                    <span class="selected">&#8594;Reference</span>
+                    <a class="menu" href="playground.html"><span class="arrow">&#8594;</span><span class="unselected">Playground</span></a>
+                    
+                </h1>
+                
+                <p>On this page you'll find the values that you need to create useful requests to the OECD's SDMX REST API. 
+                All (and only) the variables, locations and time periods are listed. However, I suppose that this is only
+                a very small subset of the actually available methods. In consequence, this page should change and 
+                enrich itself over time.</p>
+                
+                <p>Open the section below by clicking on its heading. Please note that contents is dynamically requested from
+                the API, so it may take some time, in particular for voluminous data.</p>
+                
+                <p>For information, the information is retrieved using the <span class="code">GetDataStructure</span> method.</p>
+                <ul class="toc">
+                    <li><a href="#concepts-heading">Concepts</a> (this defines the following metadata)</li>
+                    <li><a href="#subjects-heading">Subjects</a> (the indicators, if you like another word for the same thing)</li>
+                    <li><a href="#locations-heading">Locations</a> (country, area and region codes as they may not correspond to ISO codes)</li>
+                    <li><a href="#status-heading">Statuses</a> (statistical information for a value)</li>
+                    <li><a href="#periods-heading">Time periods</a> (how to express the time periods you want)</li>
+                    <li><a href="#frequencies-heading">Frequencies</a> (availability of data)</li>
+                </ul>
+                <div id="concepts" class="ref-section">
+                    <h2 id="concepts-heading">Concepts<a class="back2top" href="#">&#8593; top</a></h2>
+                    <div class="ref"><table class="ref" id="concepts-table">
+                        <thead>
+                            <tr>
+                                <th>Concept</th>
+                                <th>English</th>
+                                <th>French</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td colspan="3"><span class="loading">Loading contents ...</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table></div>
+                </div>
+                <div id="subjects" class="ref-section">
+                    <h2 id="subjects-heading">Subjects <a class="back2top" href="#">&#8593; top</a></h2>
+                    <div class="ref"><table class="ref" id="CL_REFSERIES_REFERENCESUBJECT">
+                        <thead>
+                            <tr>
+                                <th>Identifier</th>
+                                <th>English</th>
+                                <th>French</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td colspan="3"><span class="loading">Loading contents ...</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table></div>
+                </div>
+                <div id="locations" class="ref-section">
+                    <h2 id="locations-heading">Locations<a class="back2top" href="#">&#8593; top</a></h2>
+                    <div class="ref"><table class="ref" id="CL_REFSERIES_LOCATION">
+                        <thead>
+                            <tr>
+                                <th>Identifier</th>
+                                <th>English</th>
+                                <th>French</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3"><span class="loading">Loading contents ...</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table></div>
+                </div>
+                <div id="status" class="ref-section">
+                    <h2 id="status-heading">Statuses<a class="back2top" href="#">&#8593; top</a></h2>
+                    <div class="ref">
+                        <table id="CL_REFSERIES_OBS_STATUS">
+                        <thead>
+                            <tr>
+                                <th>Identifier</th>
+                                <th>English</th>
+                                <th>French</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3"><span class="loading">Loading contents ...</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table></div>
+                </div>
+                <div id="periods" class="ref-section">
+                    <h2 id="periods-heading">Time periods<a class="back2top" href="#">&#8593; top</a></h2>
+                    <div class="ref">
+                        <table id="CL_REFSERIES_TIME">
+                            <thead>
+                                <tr>
+                                    <th>Identifier</th>
+                                    <th>English</th>
+                                    <th>French</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3"><span class="loading">Loading contents ...</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="frequencies" class="ref-section">
+                    <h2 id="frequencies-heading">Frequencies<a class="back2top" href="#">&#8593; top</a></h2>
+                    <div class="ref">
+                        <table id="CL_REFSERIES_FREQUENCY">
+                        <thead>
+                            <tr>
+                                <th>Identifier</th>
+                                <th>English</th>
+                                <th>French</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3"><span class="loading">Loading contents ...</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table></div>
+                </div>
+                <!--       <h2>URL structure</h2>
+        <!-\- http://stats.oecd.org/restsdmx/sdmx.ashx/GetDataStructure/REFSERIES/OECD -\->
+        <!-\- http://stats.oecd.org/restsdmx/sdmx.ashx/GetData/REFSERIES/AUS.NETGOOD.A/OECD?startTime=1960&format=compact_v2 -\->
+        <table>
+            <thead>
+                <tr>
+                    <td>Component</td>
+                    <td>Example</td>
+                    <td>Comment</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>method</td>
+                    <td><span>GetDataStructure</span>, <span>GetData</span></td>
+                    <td>The method to call</td>
+                </tr>
+                <tr>
+                    <td>type of data</td>
+                    <td><span class="code">REFSERIES</span></td>
+                    <td>In the example, refers to time series. No other types known at this time.</td>
+                </tr>
+                <tr>
+                    <td>location</td>
+                    <td><span class="code">AUS+FRA.</span></td>
+                    <td>Optional, zero or more <a href="#locations">location codes</a>. 
+                        Must be separated in any case (even if none are specified) by a <span class="code">.</span> character.</td>
+                </tr>
+                <tr>
+                    <td>subject</td>
+                    <td><span class="code">NETGOOD.</span></td>
+                    <td>Optional, zero or more <a href="#subjects">suvject codes</a> separated by the <span class="code">+</span> character. 
+                        Must be separated from other components (even if none are specified) by a <span class="code">.</span> character.</td>
+                </tr>
+                <tr>
+                    <td>frequency(?)</td>
+                    <td><span class="code">A</span></td>
+                    <td>Presumably the frequency of the data requested, see <a href="#frequencies">frequency codes</a> below.</td>
+                </tr>
+                <tr>
+                    <td>???</td>
+                    <td><span class="code">OECD</span></td>
+                    <td>The function of this component is unknown, it does not seem required.</td>
+                </tr>
+                <tr>
+                    <td>query parameters</td>
+                    <td><span class="code">startTime=1960</span>, <span class="code">format=compact_v2</span></td>
+                    <td>Any number of query parameters to define, for example, the time period requested or the format required. 
+                        See <a href="#parameters">query parameter</a> list</td>
+                </tr>
+            </tbody>
+            
+        </table>
+        
+        <h3>Examples</h3>
+        
+        <p>Two methods are currently known, <span class="code">GetData</span> to get the actual data and 
+            <span class="code">GetDataStructure</span> to get information about the data.</p>
+        
+        <dl>
+            <dt>http://stats.oecd.org/restsdmx/sdmx.ashx/GetDataStructure/REFSERIES/OECD</dt>
+            <dd></dd>
+            <dt>http://stats.oecd.org/restsdmx/sdmx.ashx/GetData/REFSERIES/AUS.NETGOOD.A/OECD?startTime=1960&amp;format=compact_v2</dt>
+            <dd></dd>
+        </dl>
+        
+        <h2>Components</h2>
+        
+        <h3>Codes</h3>
+ -->
+            </div>
+        </div>
+        <div class="width4 column first" style="text-align:right; color:white;"><em>Yet another major success!</em> - <span id="svn_id"></span></div>
+    </body>
+</html>

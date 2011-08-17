@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Examples - SDMX REST API Documentation</title>
+        <link rel="stylesheet" type="text/css" href="css/baseline.compress.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+        <link rel="stylesheet" type="text/css" href="css/shCore.css" />
+        <link rel="stylesheet" type="text/css" href="css/shCoreDefault.css" />
+        
+        <script type="text/javascript" src="js/jquery-1.4.2.min.js"><!-- // --></script>
+        <script type="text/javascript" src="js/jquery.sparkline.min.js"><!-- // --></script>
+        <script type="text/javascript" src="js/jquery.tablesorter.min.js"><!-- // --></script>
+        <script type="text/javascript" src="js/jquery.xmlutils.js"><!-- // --></script>
+        <script type="text/javascript" src="js/highcharts.js"><!-- // --></script>
+        <script type="text/javascript" src="js/syntaxhighlighter/shCore.js"><!-- // --></script>
+        <script type="text/javascript" src="js/syntaxhighlighter/shBrushJScript.js"><!-- // --></script>
+        <script type="text/javascript" src="js/syntaxhighlighter/shBrushXml.js"><!-- // --></script>
+        <script type="text/javascript" src="js/site.js"><!-- // --></script>
+        <script type="text/javascript">
+            SyntaxHighlighter.all();
+            
+            var svn_id = "$Id: examples.html 110 2010-10-20 22:45:41Z Fix_J $";
+            var svn_rev = "$Rev: 110 $";
+        </script>
+        <script type="text/javascript" src="js/site.js"><!-- // --></script>
+        <script type="text/javascript" src="js/sdmx/core.js"><!-- // --></script>
+    </head>
+    <body>
+        <div id="page">
+            <div class="column width8 first">
+                <h1 class="mainhead">SDMX REST API documentation</h1>
+                <h1 class="subhead">
+                    <a class="menu" href="index.html"><span class="arrow">&#8594;</span><span class="unselected">Home</span></a>
+                    <span class="selected">&#8594;Examples</span>
+                    <a class="menu" href="reference.html"><span class="arrow">&#8594;</span><span class="unselected">Reference</span></a>
+                    <a class="menu" href="playground.html"><span class="arrow">&#8594;</span><span class="unselected">Playground</span></a>
+                </h1>
+                
+                <!-- ********************************* -->
+                <div id="intro">
+                    <h2>Introduction</h2>
+                    
+                    <p>This is a short and sweet tutorial that tries to give the web developer an idea of
+                    what can be done with this API. When you see special codes (for example, for locations 
+                    and subjects), you can find their meaning and many others in the 
+                        <a href="reference.html">reference</a>.</p>
+                    
+                    <p>You'll see four different ways of retrieving and using the SDMX</p>
+                    <ul>
+                        <li><a href="#single">Retrieve a single value</a></li>
+                        <li><a href="#spark">Retrieve one series and display it as a sparkline</a></li>
+                        <li><a href="#table">Retrieve several series and display them in a table</a></li>
+                        <li><a href="#chart">Retrieve several series and create a chart based on their values</a></li>
+                        <li><a href="#embed">How to embed these scripts on your own site</a></li>
+                    </ul>
+                    
+                    <p>In short, the principle is easy and always the same: You insert an HTML tag (span or div) with an ID value,
+                    and one or two lines of Javascript code that will generate a result and place it inside the empty element.</p>
+                </div>
+                
+                <!-- ********************************* -->
+                <div id="single">
+                    <h2>Get just one value</h2>
+                    <p>Let's start simple. Suppose you would like, in your text make reference to the number of unemployed 
+                        people in Germany in the year 2000, like so (imagine this is a paragraph in a webpage):</p>
+                    <blockquote>
+                        <p>As the Federal Employment Agency (BA) reported in Nuremberg last Tuesday, 
+                            the number of unemployed in Germany rose slightly to <strong>3.3 million</strong> people in 
+                            December of 2009. But the federal government and labour market experts foresee 
+                            a climb to 4.1 million this year as the government’s extension of its short-time 
+                            work allowance scheme, which has enabled firms to avoid sacking workers, expires.</p>
+                    </blockquote>
+                    <p>See the <strong>3.3 million</strong> in bold? In this text 
+                        (taken from <a href="http://www.wsws.org/articles/2010/jan2010/germ-j11.shtml"
+                            >http://www.wsws.org/articles/2010/jan2010/germ-j11.shtml</a>, 
+                        by the way) the number has been typed in by the author. But what if you could retrieve this data 
+                        from the official OECD database using the SDMX REST API? In the following I'll show you how this
+                        can be done.</p>
+                
+                    <p>First of all, you have to mark in your text where you want the data to appear, like so:</p>
+                    
+                    <pre class="brush: xml">... the number of unemployed in Germany rose slightly to <span id="de_unemp"></span> people in ...</pre>
+                
+                    <p>The <code>span</code> element is just a placeholder that will be replaced by the 
+                        output of the following code (don't worry, we'll package this into something easily reusable later):</p>
+                    <pre class="brush: js;"> 
+                        var request = { locations: "DEU", subjects: "UNEMP", frequency: "A", params: { startTime: 2009 } };
+                        SDMX.insertSingleDatapoint( request, "de_unemp" );
+                    </pre>                
+                    <blockquote>
+                        <p>In 2009, the number of unemployed people in Germany was <strong id="de_unemp"></strong> (in '000 mind you!). 
+                        The number you see in bold (it should be 3228) is a value that comes directly out of the OECD's database!</p>
+                    </blockquote>
+                    <script type="text/javascript">
+                        $(document).ready( function() {
+                            var request = { 
+                                locations: "DEU", 
+                                subjects: "UNEMP", 
+                                frequency: "A", 
+                                params: {
+                                    startTime: 2009
+                                }
+                            };
+                            SDMX.insertSingleDatapoint( request, "de_unemp" );
+                        });
+                    </script>
+                    
+                </div>
+
+                <!-- ********************************* -->
+                <div id="spark">
+                    <h2>Display a short series as a sparkline</h2>
+                    
+                    <p>Now we'll do something a bit more interesting: Not only will we retrieve a series of values, 
+                        but we will also display it as what is known as a 
+                        <em><a href="http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR">sparkline</a></em>.</p>
+                    
+                    <p>The principle is, again, the same: First indicate the place in your page where you want to insert 
+                    the sparkline and then (although the order does not really matter) put a bit of Javascript in the page
+                    that will retrieve the data, create the sparkline and put in the place you indicated:</p>
+                    
+                    <pre class="brush: xml">... Germany's <span id="sparkline"></span> unemployment figures ...</pre>
+                    
+                    <p>... and this little bit of Javascript:</p>
+                    <pre class="brush: js">
+                        var request = {
+                                locations: "DEU",
+                                subjects: "UNEMP",
+                                frequency: "A",
+                                params: {
+                                    startTime: 1989,
+                                    endTime: 2009
+                                }
+                            };
+                            SDMX.insertSparkline( request, "sparkline" );
+                    </pre>
+
+                    <p>... will give you this (neat, eh?):</p>
+                    
+                    <blockquote>
+                        <p>In the past twenty years since the wall came down, Germany's
+                            <span id="sparkline"></span> unemployment figures have been going up, most of the time [...]</p>
+                    </blockquote>
+                    
+                    <script type="text/javascript">
+                        $(document).ready( function() {
+                            var request = { 
+                                locations: "DEU", 
+                                subjects: "UNEMP", 
+                                frequency: "A", 
+                                params: {
+                                    startTime: 1989,
+                                    endTime: 2009
+                                }
+                            };
+                            SDMX.insertSparkline( request, "sparkline" );
+                        });
+                    </script>
+                </div>
+
+
+                <!-- ********************************* -->
+                <div id="table">
+                    <h2>Display a number of series in a table</h2>
+                    
+                    <p>Now let's compare the unemployment figures for the last 10 years for the DACH region (Germany,
+                        Austria, Switzerland) - and remember, the description for this Subject says 
+                        "Unemployment Total, Annual, <strong>('000)</strong>" (although it would be nice if the API 
+                        would give absolute values and leave their presentation to the consuming application):</p>
+                    
+                    <script type="text/javascript">
+                        $(document).ready( function() {
+                            var request = { 
+                                locations: ["DEU", "AUT", "CHE"], 
+                                subjects: "UNEMP", 
+                                frequency: "A", 
+                                params: {
+                                    startTime: 1999,
+                                    endTime: 2009
+                                }
+                            };
+                            SDMX.insertTable( request, "unemp_table" );
+                        });
+                    </script>
+                    
+                    <p>This is the table (using some basic table presentation layout):</p>
+                    
+                    <div style="width:400px; margin: 2em;" id="unemp_table"></div>
+
+                    <p>Of course, you may rightly say that you'd like to be able to determine the order,
+                        to have more explicit labels, possibly change the display of the rows by the values
+                        in one column or the other, etc. This can be quite easily programmed, and may
+                        actually appear here in the next iteration. So, here is the code behind it, first the HTML:</p>
+                    <pre class="brush:xml"><div id="unemp_table"></div></pre>
+                
+                    <p>and then the Javascript (note that for the first time the plural of <em>locations</em> makes sense):</p>
+                    
+                    <pre class="brush:js">
+                        var request = { 
+                                locations: ["DEU", "AUT", "CHE"], 
+                                subjects: "UNEMP", 
+                                frequency: "A", 
+                                params: {
+                                    startTime: 1999,
+                                    endTime: 2009
+                                }
+                            };
+                            SDMX.insertTable( request, "unemp_table" );
+                    </pre>
+                </div>
+               
+
+                <!-- ********************************* -->
+                <div id="chart">
+                    <h2>Display a number of series as a timeseries graph</h2>
+                    
+                    <p>Finally, we'll use three time series and plot them in a simple graph:</p>
+                    
+                    <p>HTML:</p>
+                    
+                    <pre class="brush:xml"><div id="unemp_chart" style="width: 100%; height: 400px"></div></pre>
+                    
+                    <p>Javascript:</p>
+                    
+                    <pre class="brush:js">
+                            var request = { 
+                                locations: ["DEU", "FRA", "OTO"], 
+                                subjects: "UNEMP", 
+                                frequency: "A", 
+                                params: {
+                                    startTime: 1999,
+                                    endTime: 2008
+                                }
+                            };
+                            SDMX.insertChart( request, {id: "unemp_chart"} );
+                    </pre>
+                    
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            var request = { 
+                                locations: ["DEU", "FRA", "OTO"], 
+                                subjects: "UNEMP", 
+                                frequency: "A", 
+                                params: {
+                                    startTime: 1999,
+                                    endTime: 2008
+                                }
+                            };
+                            SDMX.insertChart( request, {id: "unemp_chart"} );
+                        });
+                    </script>
+                    
+                    <div id="unemp_chart" style="width: 100%; height: 400px"></div>
+                </div>
+
+                <div id="embed">
+                    <h2>Embed this!</h2>
+                    
+                    <p>The examples shown here use the complete library loaded directly in this page.
+                        This doesn't help you of course if you would like to use OECD data via SDMX on your own site.
+                        The following are examples that open into new basic pages (do inspect the source code!)
+                        and show how you can quite simply embed this in your own pages.
+                    </p>
+                    
+                    <p><a target="_blank" href="test/test-singlevalue.html">single value embed</a></p>
+
+                    <p><a target="_blank" href="test/test-sparkline.html">sparkline embed</a></p>
+
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+        </div>
+        <div class="width4 column first" style="text-align:right; color:white;"><em>Yet another major success!</em> - <span id="svn_id"></span></div>
+    </body>
+</html>

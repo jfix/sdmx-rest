@@ -1,0 +1,127 @@
+/* $Id: site.css 108 2010-10-20 22:29:32Z Fix_J $ */
+
+body {
+	text-align: center;
+	background-color: gray;
+}
+
+p + p {
+    text-indent: 0 !important; /* override indentation of paragraphs other than first */
+}
+p {
+    padding-bottom: 1em;
+}
+
+pre {
+    padding: 0.5em;
+    margin: 1em 2em;
+    font-family: monaco, monospace;
+    background-color: #dadada;
+}
+
+h3, div.ref-section {
+    padding-top: 1.5em;
+}
+
+h1 {
+    padding-bottom: 1em;
+}
+
+h1.mainhead {
+    font-weight: bold;
+    text-align:right;
+    color: gray;
+}
+h1.subhead {
+
+}
+h1 span.unselected {
+    color:#dadada;
+}
+span.arrow {
+    color:white;
+}
+h1 span.selected {
+    color:black;
+    font-weight:bold;
+}
+
+h1 a.menu {
+    text-decoration: none;
+}
+
+.toc a {
+    color: orange;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+div.ref-section h2 {
+    cursor: pointer;
+}
+
+blockquote {
+    background-color: #FBF9EA;
+    border: 1px solid #E2E1D5;
+    margin: 2em;
+}
+h2 {
+    margin-top: 2em !important;
+    padding: 0.2em 1em;
+    border-bottom: 1px solid #dadada;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: lightblue;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+div.ref thead th {
+    cursor: pointer;
+}
+span.loading {
+    color:white;
+    font-weight:bold;
+    background-color: orange;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+div.ref {
+    display:none; 
+    height:400px; 
+    overflow:auto;
+}
+
+div#page {
+    clear: both;
+    margin: 4em auto;
+	text-align: left;
+	background-color: white;
+	padding: 1em;
+    width: 1000px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.code {
+    font-family: monospace;
+    background-color: #dadada;
+    padding: 0.3em;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px #ffffff;
+}
+
+a.back2top {
+    position:relative;
+    float:right;
+    font-size: smaller;
+    text-decoration:none;
+    color:orange;
+}
+
+span.hover {
+    color: orange !important;
+    text-decoration: underline;
+}
