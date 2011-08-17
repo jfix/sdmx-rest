@@ -1,7 +1,0 @@
-* only one request for reference page
-* add list of known methods to reference page
-* add error handling
-* handle status values (breaks, missing, etc.)
-* start with playground
-* two more tests
-* add options to certain public methods (insertSparkline, insertTable, for example) for colours, direction, etc.
