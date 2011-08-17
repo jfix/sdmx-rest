@@ -1,0 +1,28 @@
+h1. SDMX REST API
+
+SDMX is an ISO standard for the exchange of statistical data (mainly used between International Organizations such as the IMF, the World Bank and the OECD).
+
+What I try to demonstrate is the capacity of this API to integrate data from these organizations (well, the OECD only right now) easily into your own sites or apps.
+
+A REST API for some of the OECD's data exists, but is poorly if at all documented. For the World Statistics Day 2010, I wrote this proof-of-concept site, also with the goal to stimulate others to build on this, or get inspired by it. It's clearly incomplete, take it as a challenge. ;)
+
+There is one technical caveat which is that the REST API only returns XML. This means that we cannot retrieve it using only Javascript, but need a local proxy that will send the request for us. This is currently a very basic PHP page. For use elsewhere, you probably need to modify the @__sdmx_proxy_host@ variable in the @js/sdmx/core.js@ file.
+
+There is a test site at http://sdmx.oecdco.de/. Be gentle!
+
+h2. Todo list
+
+Some of the tasks that would be nice to tackle are:
+
+* only one request for reference page (currently, I think one per section is issued)
+* add list of known methods to reference page
+* add error handling
+* handle status values (breaks, missing, etc.)
+* start with playground: make this an interactive page which would allow you to cut and paste resulting HTML/Javascript for your own site/apps
+* add more tests
+* add options to certain public methods (insertSparkline, insertTable, for example) for colours, direction, etc.
+* ...
+
+h2. Disclaimer
+
+This is currently a personal project, and is neither supported nor endorsed by my employer (OECD). Don't complain if something doesn't work as expected, fork and fix it!                                      
