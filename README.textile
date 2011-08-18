@@ -8,7 +8,7 @@ A REST API for some of the OECD's data exists, but is poorly if at all documente
 
 There is one technical caveat which is that the REST API only returns XML. This means that we cannot retrieve it using only Javascript, but need a local proxy that will send the request for us. This is currently a very basic PHP page. For use elsewhere, you probably need to modify the @__sdmx_proxy_host@ variable in the @js/sdmx/core.js@ file.
 
-There is a test site at http://sdmx.oecdco.de/. Be gentle!
+There is a test site at "http://sdmx.oecdco.de/":http://sdmx.oecdco.de/. Be gentle!
 
 h2. Todo list
 
